@@ -1,20 +1,10 @@
-{% extends 'templates/template.html' %}
+{% extends 'template.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biblioteca</title>
-<link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
+    {% block title %} Biblioteca: Catalogo {% endblock %}
 
-<header>
-    {% block content %}
-    {% endblock %}
-</header>
+{% block content %}
 
-
-</body>
-</html>
+    <h2>Contenuto della Pagina Specifica 1</h2>
+    <p>Questo è il contenuto specifico della pagina 1.</p>    
+    
+{% endblock %}

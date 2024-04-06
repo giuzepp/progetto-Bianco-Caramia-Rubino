@@ -1,31 +1,9 @@
-{% extends 'templates/template.html' %}
+{% extends 'template.html' %}
+
+    {% block title %} Biblioteca {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biblioteca</title>
-<link rel="stylesheet" href="../static/style.css">
-</head>
-<body>
+      
+    
 
-<header>
-    {% block content %}
-    {% endblock %}
-</header>
-
-<main>
-    <div class="library-name">
-        <h1>Biblioteca Centrale</h1>
-    </div>
-    <div class="search-box">
-        <input type="text" placeholder="Cerca...">
-        <button>Filtra</button>
-    </div>
-</main>
-
-</body>
-</html>
 {% endblock %}
