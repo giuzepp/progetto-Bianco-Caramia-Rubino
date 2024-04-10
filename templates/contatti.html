@@ -1,0 +1,53 @@
+{% extends 'template.html' %}
+
+{% block title %} Biblioteca: Contatti {% endblock %}
+
+{% block content %}
+<section class="contact">
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="box">
+                <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                <div class="text">
+                    <h3>Address</h3>
+                    <p>Via Amalfi 6,<br>Brindisi, Italia,<br>72100</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                <div class="text">
+                    <h3>Phone</h3>
+                    <p>+39 333-666-9999</p>
+                </div>
+            </div>
+            <div class="box">
+                <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                <div class="text">
+                    <h3>Email</h3>
+                    <p>biblioteca3cani@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form>
+                <h2>Send Message</h2>
+                <div class="inputBox">
+                    <input type="text" name="" required="required">
+                    <span>Full name</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="" required="required">
+                    <span>Email</span>
+                </div>
+                <div class="inputBox">
+                    <textarea required="required"></textarea>
+                    <span>Type your Message</span>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" name="" value="send">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

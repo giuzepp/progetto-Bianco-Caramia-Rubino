@@ -1,9 +1,11 @@
 {% extends 'template.html' %}
 
-    {% block title %} Biblioteca {% endblock %}
+{% block title %} Biblioteca: {{ utente }} {% endblock %}
 
 {% block content %}
-      
-    
-
+<!-- Barra di ricerca -->
+    <form action="/search" method="POST">
+        <input type="text" name="query" placeholder="Cerca...">
+        <button type="submit">Cerca</button>
+    </form>
 {% endblock %}
