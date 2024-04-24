@@ -119,15 +119,6 @@ def registrazioneanagrafica():
     cap = request.form['cap']
     citta = request.form['citta']
 
-    #passaggio a lokok
-    session['nome'] = nome
-    session['cognome'] = cognome
-    session['eta'] = eta
-    session['telefono'] = telefono
-    session['via'] = via
-    session['cap'] = cap
-    session['citta'] = citta
-
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
     
