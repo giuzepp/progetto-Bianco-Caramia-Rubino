@@ -42,3 +42,4 @@ window.addEventListener('load', () => {
         logoutLink.style.display = 'none'; // Nascondi il link di logout
     }
 });
+

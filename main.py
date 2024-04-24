@@ -32,9 +32,10 @@ def index():
 def catalogo():
     return render_template('catalogo.html')
 
-@app.route('/contatti')
-def contatti():
-    return render_template('contatti.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
 
 # Esegue il login
 @app.route('/executelogin', methods=('POST',))
@@ -66,12 +67,27 @@ def executelogin():
 @app.route('/logok', methods=['GET'])
 def logok():
     utente = session.get("CFU")
-    print(utente)
+    connection = sqlite3.connect('database.db')
+    connection.row_factory = sqlite3.Row
+    query = 'SELECT * FROM UTENTE WHERE CFU="' + utente + '"'
+    result = connection.execute(query).fetchall()
+
+    #presa dei dati dal database
+    for row in result:
+        nome = row['nome']
+        cognome = row['cognome']
+        eta = row['eta']
+        telefono = row['telefono']
+        via = row['via']
+        cap = row['cap']
+        citta = row['citta']
+
+    print("citta:", citta)
+    #print(utente)
     print(session.get("nome", None))
     if not session.get("nome"):
         return render_template('template.html')
-    return render_template('index.html', utente=utente)
-
+    return render_template('index.html', utente=utente, nome=nome, cognome=cognome, eta=eta, telefono=telefono, via=via, cap=cap, citta=citta)
 @app.route('/logout')
 def logout():
     session.clear()
@@ -89,6 +105,46 @@ def executesignup():
     connection.commit()
     connection.close()
     return redirect('/')
+
+@app.route('/registrazioneanagrafica', methods=('POST','GET'))
+def registrazioneanagrafica():
+    utente = session.get("CFU")
+    print("prova", utente)
+    #presi dal form
+    nome = request.form['nome']
+    cognome = request.form['cognome']
+    eta = request.form['eta']
+    telefono = request.form['telefono']
+    via = request.form['via']
+    cap = request.form['cap']
+    citta = request.form['citta']
+
+    #passaggio a lokok
+    session['nome'] = nome
+    session['cognome'] = cognome
+    session['eta'] = eta
+    session['telefono'] = telefono
+    session['via'] = via
+    session['cap'] = cap
+    session['citta'] = citta
+
+    connection = sqlite3.connect('database.db')
+    connection.row_factory = sqlite3.Row
+    
+    # Verifica se il CFU esiste nella tabella
+    cfu_row = connection.execute('SELECT * FROM UTENTE WHERE CFU = ?', (utente,)).fetchone()
+
+    if cfu_row:
+        # Se il CFU esiste, esegui l'inserimento nella riga specifica
+        connection.execute('UPDATE UTENTE SET nome=?, cognome=?, eta=?, telefono=?, via=?, cap=?, citta=? WHERE CFU=?',
+                        (nome, cognome, eta, telefono, via, cap, citta, utente))
+        connection.commit()
+        connection.close()
+        return redirect(url_for('logok', nome=nome, cognome=cognome, eta=eta, telefono=telefono, via=via, cap=cap, citta=citta))
+    else:
+        # Se il CFU non esiste, gestisci l'errore o fai altro
+        connection.close()
+        return "CFU non trovato"
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=80)

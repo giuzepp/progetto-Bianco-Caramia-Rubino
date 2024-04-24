@@ -110,14 +110,13 @@ header{
 
 /* footer */
 footer {
+    background-color: #2e2f31;
+    color: white;
+    text-align: center;
+    padding: 10px;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
 }
 
 /* Stile per la barra di ricerca */
@@ -391,4 +390,116 @@ form button:hover {
 
 .login-register p a:hover{
     text-decoration: underline;
+}
+
+/* pagina anagrafica*********************************************************************************/
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Stili per il contenitore principale */
+.container {
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+    position: relative;
+}
+
+/* Stili per il form */
+.form-container {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-container input[type="submit"] {
+    background-color: #a57d45;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    transition: .5s;
+}
+
+/* Stili per la sezione dell'indirizzo */
+.address-section {
+    margin-top: 20px;
+}
+
+.address-section h2 {
+    margin-bottom: 10px;
+}
+
+.address-section input {
+    width: calc(100% - 70px);
+}
+
+/*container info*/
+/* Stili per la sezione di informazioni */
+.infocont {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-right: 300px;
+    padding: 20px;
+    background-color: #BEA581;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Stili per gli elementi h2 */
+.infocont h2 {
+    color: WHITE;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* Stili per il testo paragrafo */
+.infocont p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Stili per la lista non ordinata */
+.infocont ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Stili per gli elementi della lista */
+.infocont li {
+    margin-bottom: 5px;
+}
+
+/* Stili per il testo in grassetto */
+.bold-text {
+    font-weight: bold;
 }

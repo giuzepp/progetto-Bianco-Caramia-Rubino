@@ -3,9 +3,39 @@
 {% block title %} Biblioteca: {{ utente }} {% endblock %}
 
 {% block content %}
-<!-- Barra di ricerca -->
-    <form action="/search" method="POST">
-        <input type="text" name="query" placeholder="Cerca...">
-        <button type="submit">Cerca</button>
-    </form>
+
+    <div class="page-wrapper">
+        <div class="container">
+                                        
+            <div class="form-container">
+                
+                <form action="/registrazioneanagrafica" method="POST">
+                    <h1>Dati Anagrafici</h1>
+                    <br>
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" name="nome" value="{{ nome }}" style="text-align: center;"required><br>
+                    <label for="cognome">Cognome:</label><br>
+                    <input type="text" id="cognome" name="cognome" value="{{ cognome }}" style="text-align: center;"required><br>
+                    <label for="eta">Età:</label><br>
+                    <input type="number" id="eta" name="eta" value="{{ eta }}" style="text-align: center;"required><br>
+                    <label for="telefono">Telefono:</label><br>
+                    <input type="tel" id="telefono" name="telefono" value="{{ telefono }}" style="text-align: center;"><br><br>
+    
+                    <div class="address-section">
+                        <h2>Indirizzo</h2>
+                        <label for="via">Via:</label><br>
+                        <input type="text" id="via" name="via" value="{{ via }}" style="text-align: center;" required><br> 
+                        <label for="cap">CAP:</label><br>
+                        <input type="text" id="cap" name="cap" value="{{ cap }}" style="text-align: center;" required><br>
+                        <label for="citta">Città:</label><br>
+                        <input type="text" id="citta" name="citta" value="{{ citta }}" style="text-align: center;" required><br><br>
+                    </div>
+    
+                    <input type="submit" value="Registra">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
