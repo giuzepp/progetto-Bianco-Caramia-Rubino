@@ -1,15 +1,18 @@
-{% extends 'template.html' %}
+{% extends "template.html" %}
 
-    {% block title %} Biblioteca: Catalogo {% endblock %}
+{% block title %}Catalogo - Ricerca Avanzata{% endblock %}
 
 {% block content %}
+    <!-- Form di ricerca normale -->
+    <div class="form-box search-form">
+        <h2>Ricerca Libro</h2>
+        <form action="/search_books" method="POST">
+            <div class="input-box">
+                <input type="text" id="search-term" name="search_term" placeholder="Cerca per titolo, autore, genere...">
+            </div>
+            <button type="submit" class="btn">Cerca</button>
+        </form>
+    </div>
 
-    <!-- Barra di ricerca -->
-    
-    <form action="/search" method="POST">
-        <input type="text" name="query" placeholder="Cerca...">
-        <button type="submit">Cerca</button>
-    </form>
-   
     
 {% endblock %}

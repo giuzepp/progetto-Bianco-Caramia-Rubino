@@ -503,3 +503,7 @@ form button:hover {
 .bold-text {
     font-weight: bold;
 }
+
+#btn-advanced-search {
+    display: block;
+    margin-bottom: 10px; /* Aggiungi margine inferiore per spaziare il pulsante dagli altri elementi */}
