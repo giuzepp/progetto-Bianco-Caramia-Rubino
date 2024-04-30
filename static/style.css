@@ -504,6 +504,44 @@ form button:hover {
     font-weight: bold;
 }
 
-#btn-advanced-search {
-    display: block;
-    margin-bottom: 10px; /* Aggiungi margine inferiore per spaziare il pulsante dagli altri elementi */}
+/* Stili per la tabella */
+table {
+    margin-right: 300px ;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: 'Arial', sans-serif; /* Font di base */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid black;
+    transition: background-color 0.3s ease;
+    font-family: 'Open Sans', sans-serif; /* Font per le celle */
+}
+
+/* Stile per l'intestazione della tabella */
+th {
+    background-color: #302519;
+    color: #FFF;
+    font-weight: bold;
+}
+
+/* Stile per le righe dispari */
+tbody tr:nth-child(odd) {
+    background-color: #BEA581;
+    color: black;
+}
+
+/* Stile per le righe dispari */
+tbody tr:nth-child(even) {
+    background-color: #725c39;
+    color:black;
+}
+
+/* Hover sulle righe della tabella */
+tbody tr:hover {
+    background-color: hwb(36 23% 28%);
+    transition: background-color 0.3s ease;
+}

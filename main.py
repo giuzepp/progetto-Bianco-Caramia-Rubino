@@ -32,7 +32,7 @@ def index():
 def catalogo():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
-    query = 'SELECT IDL, titolo, lingua, genere, anno_pubblicazione, anno_edizione, cognome, n_pag FROM LIRBO INNER JOIN AUTORE ON LIRBO.CFA = AUTORE.CFA'
+    query = 'SELECT IDL, titolo, lingua, genere, anno_pubblicazione, anno_edizione, cognome, n_pag, NomeEditore, Idpiano FROM LIRBO INNER JOIN AUTORE ON LIRBO.CFA = AUTORE.CFA'
     result = connection.execute(query).fetchall()
     #print(result)
     return render_template('catalogo.html', result=result)
