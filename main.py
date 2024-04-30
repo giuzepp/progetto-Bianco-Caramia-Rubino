@@ -30,7 +30,12 @@ def index():
 
 @app.route('/catalogo')
 def catalogo():
-    return render_template('catalogo.html')
+    connection = sqlite3.connect('database.db')
+    connection.row_factory = sqlite3.Row
+    query = 'SELECT IDL, titolo, lingua, genere, anno_pubblicazione, anno_edizione, cognome, n_pag FROM LIRBO INNER JOIN AUTORE ON LIRBO.CFA = AUTORE.CFA'
+    result = connection.execute(query).fetchall()
+    #print(result)
+    return render_template('catalogo.html', result=result)
 
 
 @app.route('/info')
@@ -136,57 +141,6 @@ def registrazioneanagrafica():
         # Se il CFU non esiste, gestisci l'errore o fai altro
         connection.close()
         return "CFU non trovato"
-
-
-@app.route('/search_books', methods=['POST'])
-def search_books():
-    if request.method == 'POST':
-        print(request.form)
-        # Recupera i dati del database
-        titolo = request.form['titolo']
-        genere = request.form['genere']
-        lingua = request.form['lingua']
-        n_pag = request.form['n_pag']
-        anno_edizione = request.form['anno_edizione']
-        anno_pubblicazione = request.form['anno_pubblicazione']
-
-        # Costruisci la query SQL in base ai criteri di ricerca
-        query = "SELECT * FROM Libri WHERE 1=1"
-        params = []
-
-        if titolo:
-            query += " AND titolo LIKE ?"
-            params.append(' titolo ')
-        if genere:
-            query += " AND genere = ?"
-            params.append(genere)
-        if lingua:
-            query += " AND lingua = ?"
-            params.append(lingua)
-        if n_pag:
-            query += " AND n_pag = ?"
-            params.append('n_pag')
-        if anno_edizione:
-            query += " AND anno_edizione = ?"
-            params.append(anno_edizione)
-        if anno_pubblicazione:
-            query += " AND anno_pubblicazione = ?"
-            params.append(anno_pubblicazione)
-
-        # Esegui la query SQL
-        connection = sqlite3.connect('database.db')
-        connection.row_factory = sqlite3.Row
-        result = connection.execute(query, params).fetchall()
-        connection.close()
-
-        # Se sono stati trovati dei libri, passa le informazioni alla pagina di visualizzazione
-        if result:
-            return render_template('catalogo.html', libri=result)
-        else:
-            # Altrimenti, mostra un messaggio di errore
-            messaggio_errore = "Nessun libro trovato con i criteri di ricerca specificati."
-            return render_template('catalogo.html', messaggio=messaggio_errore)
-
-
+    
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=80)

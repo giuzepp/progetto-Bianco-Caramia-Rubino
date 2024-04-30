@@ -4,15 +4,43 @@
 
 {% block content %}
     <!-- Form di ricerca normale -->
-    <div class="form-box search-form">
-        <h2>Ricerca Libro</h2>
-        <form action="/search_books" method="POST">
-            <div class="input-box">
-                <input type="text" id="search-term" name="search_term" placeholder="Cerca per titolo, autore, genere...">
-            </div>
-            <button type="submit" class="btn">Cerca</button>
-        </form>
-    </div>
+    
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>IDL</th>
+                    <th>TITOLO</th>
+                    <th>GENERE</th>
+                    <th>LINGUA</th>
+                    <th>NPAG</th>
+                    <th>ANNO EDIZIONE</th>
+                    <th>ANNO DI PUBBLICAZIONE</th>
+                    <th>AUTORE</th>
+                    <th>NOMEEDITORE</th>
+                    <th>IDPIANO</th>
+                    <!-- Aggiungi altre colonne se necessario -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in result %}
+                <tr>
+                    <td>{{ result['IDL'] }}</td>
+                    <td>{{ result['titolo'] }}</td>
+                    <td>{{ result['genere'] }}</td>
+                    <td>{{ result['lingua'] }}</td>
+                    <td>{{ result['n_pag'] }}</td>
+                    <td>{{ result['anno_edizione'] }}</td>
+                    <td>{{ result['anno_pubblicazione'] }}</td>
+                    <td>{{ result['cognome'] }}</td>
+                    <td>{{ result['NomeEditore'] }}</td>
+                    <td>{{ result['Idpiano'] }}</td>
+                
+                    <!-- Aggiungi altre colonne se necessario -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
     
 {% endblock %}
